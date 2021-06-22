@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+	<display-name>study0622</display-name>
+	<!-- member 영역의 id체크 요청입니다. -->
+	<servlet>
+		<servlet-name>idCheckServlet</servlet-name>
+		<servlet-class>com.korea.study0622.controller.member.IdCheckServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>idCheckServlet</servlet-name>
+		<url-pattern>/member/idcheck</url-pattern>
+	</servlet-mapping>
+
+
+	<!-- board영역의 등록 요청입니다. -->
+	<servlet>
+		<servlet-name>registServlet</servlet-name>
+		<servlet-class>com.korea.study0622.controller.board.RegistServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>registServlet</servlet-name>
+		<url-pattern>/board/regist</url-pattern>
+	</servlet-mapping>
+	
+	<!-- board영역의 수정 요청입니다. -->
+	<servlet>
+		<servlet-name>updateServlet</servlet-name>
+		<servlet-class>com.korea.study0622.controller.board.UpdateServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>updateServlet</servlet-name>
+		<url-pattern>/board/update</url-pattern>
+	</servlet-mapping>
+	
+	<!-- board영역의 삭제 요청입니다. -->
+	<servlet>
+		<servlet-name>deleteServlet</servlet-name>
+		<servlet-class>com.korea.study0622.controller.board.DeleteServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>deleteServlet</servlet-name>
+		<url-pattern>/board/delete</url-pattern>
+	</servlet-mapping>
+</web-app>
