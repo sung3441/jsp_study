@@ -7,33 +7,33 @@
 
 	<!-- 서블릿 매핑 -->
 	<servlet>
-		<servlet-name>registServlet</servlet-name>
+		<servlet-name>boardRegistServlet</servlet-name>
 		<servlet-class>com.koreait.site0622.controller.board.RegistServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>registServlet</servlet-name>
+		<servlet-name>boardRegistServlet</servlet-name>
 		<url-pattern>/board/regist</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
-		<servlet-name>editServlet</servlet-name>
+		<servlet-name>boardEditServlet</servlet-name>
 		<servlet-class>com.koreait.site0622.controller.board.EditServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>editServlet</servlet-name>
+		<servlet-name>boardEditServlet</servlet-name>
 		<url-pattern>/board/edit</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
-		<servlet-name>DeleteServlet</servlet-name>
+		<servlet-name>boardDeleteServlet</servlet-name>
 		<servlet-class>com.koreait.site0622.controller.board.DeleteServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>DeleteServlet</servlet-name>
+		<servlet-name>boardDeleteServlet</servlet-name>
 		<url-pattern>/board/delete</url-pattern>
 	</servlet-mapping>
-	
-	
+
+
 	<servlet>
 		<servlet-name>checkIdServlet</servlet-name>
 		<servlet-class>com.koreait.site0622.controller.member.CheckIdServlet</servlet-class>
@@ -42,4 +42,24 @@
 		<servlet-name>checkIdServlet</servlet-name>
 		<url-pattern>/member/idcheck</url-pattern>
 	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>loginServlet</servlet-name>
+		<servlet-class>com.koreait.site0622.controller.member.LoginServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>loginServlet</servlet-name>
+		<url-pattern>/member/login</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>newsRegistServlet</servlet-name>
+		<servlet-class>com.koreait.site0622.controller.news.RegistServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>newsRegistServlet</servlet-name>
+		<url-pattern>/news/regist</url-pattern>
+	</servlet-mapping>
+
+
 </web-app>

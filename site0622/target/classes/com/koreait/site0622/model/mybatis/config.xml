@@ -5,8 +5,12 @@
 <configuration>
 	<typeAliases>
 		<!-- 부를 타입 이름 바꾸기 -->
-		<typeAlias type="com.koreait.site0622.model.domain.Board" alias="Board" />
-		<typeAlias type="com.koreait.site0622.model.domain.Member" alias="Member" />
+		<typeAlias type="com.koreait.site0622.model.domain.Board" 			alias="Board" />
+		<typeAlias type="com.koreait.site0622.model.domain.Member" 		alias="Member" />
+		<typeAlias type="com.koreait.site0622.model.domain.Dept" 			alias="Dept" />
+		<typeAlias type="com.koreait.site0622.model.domain.Emp" 			alias="Emp" />
+		<typeAlias type="com.koreait.site0622.model.domain.News" 			alias="News" />
+		<typeAlias type="com.koreait.site0622.model.domain.Comments" 	alias="Comments" />
 	</typeAliases>
 
 	<environments default="development">
@@ -19,10 +23,12 @@
 	</environments>
 	<mappers>
 		<!-- 클래스의 경우 .으로 접근이 가능하지만, 아닌 경우 /으로 접근해야함 -->
-		<mapper
-			resource="com/koreait/site0622/model/mybatis/BoardMapper.xml" />
-		<mapper
-			resource="com/koreait/site0622/model/mybatis/MemberMapper.xml" />
+		<mapper resource="com/koreait/site0622/model/mybatis/BoardMapper.xml" />
+		<mapper resource="com/koreait/site0622/model/mybatis/MemberMapper.xml" />
+		<mapper resource="com/koreait/site0622/model/mybatis/DeptMapper.xml" />
+		<mapper resource="com/koreait/site0622/model/mybatis/EmpMapper.xml" />
+		<mapper resource="com/koreait/site0622/model/mybatis/NewsMapper.xml" />
+		<mapper resource="com/koreait/site0622/model/mybatis/CommentsMapper.xml" />
 		
 	</mappers>
 </configuration>

@@ -9,11 +9,9 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
-
 * {
   box-sizing: border-box;
 }
-
 /* style the container */
 .container {
   position: relative;
@@ -21,7 +19,6 @@ body {
   background-color: #f2f2f2;
   padding: 20px 0 30px 0;
 } 
-
 /* style inputs and link buttons */
 input,
 .btn {
@@ -36,39 +33,32 @@ input,
   line-height: 20px;
   text-decoration: none; /* remove underline from anchors */
 }
-
 input:hover,
 .btn:hover {
   opacity: 1;
 }
-
 /* add appropriate colors to fb, twitter and google buttons */
 .fb {
   background-color: #3B5998;
   color: white;
 }
-
 .twitter {
   background-color: #55ACEE;
   color: white;
 }
-
 .google {
   background-color: #dd4b39;
   color: white;
 }
-
 /* style the submit button */
-input[type=submit] {
+input[type=button] {
   background-color: #04AA6D;
   color: white;
   cursor: pointer;
 }
-
-input[type=submit]:hover {
+input[type=button]:hover {
   background-color: #45a049;
 }
-
 /* Two-column layout */
 .col {
   float: left;
@@ -77,14 +67,12 @@ input[type=submit]:hover {
   padding: 0 50px;
   margin-top: 6px;
 }
-
 /* Clear floats after the columns */
 .row:after {
   content: "";
   display: table;
   clear: both;
 }
-
 /* vertical line */
 .vl {
   position: absolute;
@@ -93,7 +81,6 @@ input[type=submit]:hover {
   border: 2px solid #ddd;
   height: 175px;
 }
-
 /* text inside the vertical line */
 .vl-innertext {
   position: absolute;
@@ -104,19 +91,16 @@ input[type=submit]:hover {
   border-radius: 50%;
   padding: 8px 10px;
 }
-
 /* hide some text on medium and large screens */
 .hide-md-lg {
   display: none;
 }
-
 /* bottom container */
 .bottom-container {
   text-align: center;
   background-color: #666;
   border-radius: 0px 0px 4px 4px;
 }
-
 /* Responsive layout - when the screen is less than 650px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 650px) {
   .col {
@@ -134,6 +118,21 @@ input[type=submit]:hover {
   }
 }
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#bt_login").click(function(){
+		login();
+	});
+});
+function login(){
+	$("form").attr({
+		"action":"/member/login",
+		"method":"post"
+	});	
+	$("form").submit();
+}
+</script>
 </head>
 <body>
 
@@ -141,7 +140,7 @@ input[type=submit]:hover {
 <p>Resize the browser window to see the responsive effect. When the screen is less than 650px wide, make the two columns stack on top of each other instead of next to each other.</p>
 
 <div class="container">
-  <form action="/action_page.php">
+  <form>
     <div class="row">
       <h2 style="text-align:center">Login with Social Media or Manually</h2>
       <div class="vl">
@@ -165,9 +164,9 @@ input[type=submit]:hover {
           <p>Or sign in manually:</p>
         </div>
 
-        <input type="text" name="username" placeholder="Username" required>
-        <input type="password" name="password" placeholder="Password" required>
-        <input type="submit" value="Login">
+        <input type="text" 			name="user_id" 		placeholder="Your ID..." required>
+        <input type="password" 	name="password" 	placeholder="Password" required>
+        <input type="button" value="Login" id="bt_login">
       </div>
       
     </div>
