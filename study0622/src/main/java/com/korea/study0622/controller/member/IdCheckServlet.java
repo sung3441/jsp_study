@@ -37,17 +37,19 @@ public class IdCheckServlet extends HttpServlet{
 //		member.setUser_id(user_id);
 //		member.setPassword(password);
 //		member.setName(name);
-		
-		 Member member = memberDAO.getMemberId(user_id);
-		 out.print("<script>");
+		System.out.println(user_id+"넘겨받으,ㄴ 아이디");
+		Member member = memberDAO.getMemberId(user_id);
+			/*
+			 * out.print("<script>"); if(member == null) { out.print("alert('회원가입 가능');");
+			 * out.print("location.href = '/member/signup.jsp';"); }else {
+			 * out.print("alert('회원가입 불가능');");
+			 * out.print("location.href = '/member/signup.jsp';"); } out.print("</script>");
+			 */
 		 if(member == null) {
-			 out.print("alert('회원가입 가능');");
-			 out.print("location.href = '/member/signup.jsp';");
+			 out.print("true");
 		 }else {
-			 out.print("alert('회원가입 불가능');");
-			 out.print("location.href = '/member/signup.jsp';");
+			 out.print("false");
 		 }
-		 out.print("</script>");
 	}
 }
 

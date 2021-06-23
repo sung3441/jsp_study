@@ -6,4 +6,13 @@
 	<select id="getMemberId" resultType="Member" parameterType="String">
 		select * from member where user_id=#{user_id}
 	</select>
+	
+	<select id="selectByMember" resultType="Member" parameterType="Member">
+		select * from member where user_id=#{user_id} and password=#{password}
+	</select>
+	
+	<insert id="regist" parameterType="Member">
+		insert into member(user_id, password, name) values(#{user_id}, #{password}, #{name});
+	</insert>
+
 </mapper>

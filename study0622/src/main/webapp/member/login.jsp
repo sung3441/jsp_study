@@ -136,7 +136,13 @@ input[type=submit]:hover {
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-
+function loginCheck() {
+	$("form").attr({
+		"action" : "/member/login",
+		"method" : "post"
+	});
+	$("form").submit();
+}
 
 </script>
 </head>
@@ -171,9 +177,9 @@ input[type=submit]:hover {
           <p>Or sign in manually:</p>
         </div>
 
-        <input type="text" name="username" placeholder="Username" required>
+        <input type="text" name="user_id" placeholder="Username" required>
         <input type="password" name="password" placeholder="Password" required>
-        <input type="submit" value="Login">
+        <input type="submit" value="Login" onClick="loginCheck()">
       </div>
       
     </div>

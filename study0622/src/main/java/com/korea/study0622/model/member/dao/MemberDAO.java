@@ -9,5 +9,6 @@ public interface MemberDAO {
 	public int regist(Member member); //회원 가입 요청
 	public List selectAll(); //회원 전체 조회
 	public Member select(int member_id); //멤버 한명 조회
+	public Member select(Member member);
 	public int delete(int member_id); //멤버 삭제
 }

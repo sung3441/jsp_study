@@ -17,7 +17,7 @@ public class MybatisBoardDAO implements BoardDAO{
 	//값 넣기
 	public int insert(Board board) {
 		SqlSession sqlSession = configManager.getSession();
-		int result = sqlSession.insert("insert", board);
+		int result = sqlSession.insert("Board.insert", board);
 		sqlSession.commit();
 		configManager.closeSession(sqlSession);
 		return result;
@@ -26,7 +26,7 @@ public class MybatisBoardDAO implements BoardDAO{
 	//전체 게시글 조회
 	public List selectAll() {
 		SqlSession sqlSession = configManager.getSession();
-		List list =  sqlSession.selectList("selectAll");
+		List list =  sqlSession.selectList("Board.selectAll");
 		configManager.closeSession(sqlSession);
 		return list;
 	}
@@ -34,7 +34,7 @@ public class MybatisBoardDAO implements BoardDAO{
 	//데이터 한 건 조회
 	public Board select(int board_id) {
 		SqlSession sqlSession = configManager.getSession();
-		Board board = sqlSession.selectOne("select", board_id);
+		Board board = sqlSession.selectOne("Board.select", board_id);
 		configManager.closeSession(sqlSession);
 		return board;
 	}
@@ -42,7 +42,7 @@ public class MybatisBoardDAO implements BoardDAO{
 	//데이터 업데이트
 	public int update(Board board) {
 		SqlSession sqlSession = configManager.getSession();
-		int result = sqlSession.update("update", board);
+		int result = sqlSession.update("Board.update", board);
 		sqlSession.commit();
 		configManager.closeSession(sqlSession);
 		return result;
@@ -51,7 +51,7 @@ public class MybatisBoardDAO implements BoardDAO{
 	//데이터 삭제
 	public int delete(int board_id) {
 		SqlSession sqlSession = configManager.getSession();
-		int result = sqlSession.delete("delete", board_id);
+		int result = sqlSession.delete("Board.delete", board_id);
 		sqlSession.commit();
 		configManager.closeSession(sqlSession);
 		return result;

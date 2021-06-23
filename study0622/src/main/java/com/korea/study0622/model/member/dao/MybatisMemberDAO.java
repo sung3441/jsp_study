@@ -28,8 +28,12 @@ public class MybatisMemberDAO implements MemberDAO{
 
 
 	public int regist(Member member) {
+		SqlSession sqlSession = configManager.getSession();
+		int result = sqlSession.insert("Member.regist", member);
+		sqlSession.commit();
+		configManager.closeSession(sqlSession);
 		
-		return 0;
+		return result;
 	}
 
 
@@ -47,6 +51,13 @@ public class MybatisMemberDAO implements MemberDAO{
 	public int delete(int member_id) {
 	
 		return 0;
+	}
+
+	public Member select(Member member) {
+		SqlSession sqlSession = configManager.getSession();
+		Member obj = sqlSession.selectOne("Member.selectByMember", member);
+		configManager.closeSession(sqlSession);
+		return obj;
 	}
 
 }
