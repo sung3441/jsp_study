@@ -6,6 +6,7 @@
 <typeAliases>
 	<typeAlias type="com.korea.study0622.model.domain.Member" alias="Member"/>
 	<typeAlias type="com.korea.study0622.model.domain.Board" alias="Board"/>
+	<typeAlias type="com.korea.study0622.model.domain.News" alias="News"/>
 </typeAliases>
   <environments default="development">
     <environment id="development">
@@ -21,5 +22,6 @@
   <mappers>
     <mapper resource="com/korea/study0622/model/mybatis/MemberMapper.xml"/>
     <mapper resource="com/korea/study0622/model/mybatis/BoardMapper.xml"/>
+    <mapper resource="com/korea/study0622/model/mybatis/NewsMapper.xml"/>
   </mappers>
 </configuration>

@@ -62,4 +62,35 @@
 		<servlet-name>deleteServlet</servlet-name>
 		<url-pattern>/board/delete</url-pattern>
 	</servlet-mapping>
+	
+	<!-- news 등록 요청 -->
+	<servlet>
+		<servlet-name>newsRegistServlet</servlet-name>
+		<servlet-class>com.korea.study0622.controller.news.RegistServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>newsRegistServlet</servlet-name>
+		<url-pattern>/news/regist</url-pattern>
+	</servlet-mapping>
+	
+	<!-- news 수정 요청 -->	
+	<servlet>
+		<servlet-name>newsUpdateServlet</servlet-name>
+		<servlet-class>com.korea.study0622.controller.news.UpdateServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>newsUpdateServlet</servlet-name>
+		<url-pattern>/news/update</url-pattern>
+	</servlet-mapping>
+	
+	
+	<!-- news 삭제 요청 -->	
+	<servlet>
+		<servlet-name>newsDeleteServlet</servlet-name>
+		<servlet-class>com.korea.study0622.controller.news.DeleteServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>newsDeleteServlet</servlet-name>
+		<url-pattern>/news/delete</url-pattern>
+	</servlet-mapping>
 </web-app>

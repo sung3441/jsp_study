@@ -12,7 +12,7 @@
 	</select>
 	
 	<insert id="regist" parameterType="Member">
-		insert into member(user_id, password, name) values(#{user_id}, #{password}, #{name});
+		insert into member(user_id, password, name) values(#{user_id}, #{password}, #{name})
 	</insert>
 
 </mapper>
