@@ -60,6 +60,23 @@
 		<servlet-name>newsRegistServlet</servlet-name>
 		<url-pattern>/news/regist</url-pattern>
 	</servlet-mapping>
-
+	
+	<servlet>
+		<servlet-name>commentsRegistServlet</servlet-name>
+		<servlet-class>com.koreait.site0622.controller.comments.RegistServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>commentsRegistServlet</servlet-name>
+		<url-pattern>/comments/regist</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>commentsListServlet</servlet-name>
+		<servlet-class>com.koreait.site0622.controller.comments.ListServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>commentsListServlet</servlet-name>
+		<url-pattern>/comments/list</url-pattern>
+	</servlet-mapping>
 
 </web-app>
