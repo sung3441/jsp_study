@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+    .wrapper{
+        width: 1000px;
+        height: 700px;
+        background: yellow;
+        margin: auto;
+        overflow: hidden;
+
+    }
+    
+    .left-side{
+        width: 200px;
+        height: 100%;
+        background: crimson;
+        float: left;
+        
+    }
+    
+	.left-side *{
+		width: 96%;
+	}
+    
+    #content{
+        width: 800px;
+        height: 100%;
+        background: #ccc;
+        float: left;
+
+    }
+
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+var posArray = new Array(5);
+var map;
+var item1;
+
+function initMap() {
+	//좌표 배열에 데이터 넣기
+	//posArray[0] = new google.maps.LatLng(51.505742,-0.125850);
+	
+	var mapProp= {
+		center: new google.maps.LatLng(37.574854619610996, 126.97685869230727),
+		zoom:13,
+	};
+	//맵 객체 생성
+	map = new google.maps.Map(document.getElementById("content"),mapProp);
+}
+
+//마커 생성
+function createMarker(json){
+	//서버로부터 받은 json을 이용하여 마커 생성하기
+	console.log(item);
+	for(var i = 0; i < json.item.length; i++){
+		var item = json.item[i];
+		
+		//마커 생성
+		var marker = new google.maps.Marker({position : new google.maps.LatLng(item.mapy, item.mapx)});
+		marker.setMap(map);
+		console.log(item);
+		//팝업 윈도우 생성
+		var infowindow = new google.maps.InfoWindow({
+			content: "<img src='"+item.firstimage+"' style='width: 60px'></br><button onClick=\"del("+item.store_id+");\">삭제하기</button>"
+		});
+		infowindow.open(map,marker); //어느 맵에, 어느 마커에 연결할지 결정
+	}
+}
+
+function del(store_id){
+	if(confirm("정말 삭제하시겠습니까?")){
+		location.href = "/main/del.jsp?store_id="+store_id;
+	}
+}
+
+//지도에 표시할 관광정보를 요청하되, 공공데이터 포털로부터 가져온다
+function loadFromXML(){
+	//jsp, 서블릿에게 데이터 요청을 해야함
+	$.ajax({
+		"url" : "/place/list",
+		"type" : "get",
+		"success" : function(result, status, xhr){
+			var json = JSON.parse(result);
+			createMarker(json);
+		}
+	});
+}
+
+function regist(){
+	//스트링 데이터 뿐 아니라, 바이너리 파일도 포함된 데이터를 비동기로 등록하자
+	//var formData = $("form").serialize(); //폼을 구성하는 모든 파라미터 요소들을 직렬화 상태 만들기!
+	var formData = new FormData(document.querySelector("form")); //바이너리 데이터 전송이 가능한 객체
+	
+	$.ajax({
+		url : "/main/regist.jsp",
+		type : "post",
+		enctype : "multipart/form-data",
+		contentType : false, //주의
+		processData : false, //주의
+		data : formData,
+		success : function(result, status, xhr){
+			//여기서 한 건만 가져오는 함수 만들기
+			selectOne();
+		}
+	});
+}
+
+function getList(){
+	$.ajax({
+		url : "/main/list.jsp",
+		type : "get",
+		success : function(result, status, xhr){
+			createMarker(result);
+		}
+	});
+}
+
+function selectOne(){
+	$.ajax({
+		url : "/main/selectOne.jsp",
+		type : "get",
+		success : function(result, status, xhr){
+			createMarker(result);
+		}
+	});
+}
+
+$(function(){
+	getList();
+	
+	var bt_regist = $("input[type='button']")[1]; //2번째 버튼
+	$(bt_regist).click(function(){
+		regist();
+	});
+});
+
+</script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="left-side">
+    		<form>
+	        	<input type="button" value="공공데이터Load" onClick="loadFromXML()">
+	        	<select>
+	        		<option>시도 선택</option>
+	    
+	        	</select>
+	        	<select>
+	        		<option>구군 선택</option>
+	        	</select>
+	        	
+	        	<input type="text" name="title" placeholder="제목..">
+	        	<textarea placeholder="내용..." style="height: 200px" name="content"></textarea>
+	        	<input type="text" name="addr1" placeholder="주소..">
+	        	<input type="text" name="mapy" placeholder="위도..">
+	        	<input type="text" name="mapx" placeholder="경도..">
+	        	<input type="file" name="storeimg">
+	        	<input type="button" value="관광지 등록">
+	        </form>
+        </div>
+        <div id="content">우측</div>
+    </div>
+</body>
+</html>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCISki7sKKJxMgMmqIElppKBPbMWyBZSjc&callback=initMap"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
