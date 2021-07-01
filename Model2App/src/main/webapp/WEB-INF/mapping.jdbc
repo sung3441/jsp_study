@@ -1,0 +1,11 @@
+#컨트롤러 매핑
+/board/list.do=com.koreait.model2app.controller.board.ListController
+/board/detail.do=com.koreait.model2app.controller.board.DetailController
+/board/regist.do=com.koreait.model2app.controller.board.RegistController
+/board/edit.do=com.koreait.model2app.controller.board.EditController
+
+#view 매핑
+/result/board/list=/board/list.jsp
+/result/board/detail=/board/detail.jsp
+/result/board/regist=/board/list.do
+/result/board/edit=/board/detail.jsp
