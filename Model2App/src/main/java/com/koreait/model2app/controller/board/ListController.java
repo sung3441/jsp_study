@@ -17,7 +17,7 @@ public class ListController implements Controller{
 	BoardDAO boardDAO;
 	
 	public ListController() {
-		boardDAO = new JdbcBoardDAO();
+		boardDAO = new MybatisBoardDAO();
 		
 	}
 	

@@ -15,7 +15,7 @@ public class EditController implements Controller{
 	BoardDAO boardDAO;
 	
 	public EditController() {
-		boardDAO = new JdbcBoardDAO();
+		boardDAO = new MybatisBoardDAO();
 	}
 	
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException {

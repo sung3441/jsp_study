@@ -15,7 +15,7 @@ public class RegistController implements Controller{
 	BoardDAO boardDAO;
 	
 	public RegistController() {
-		boardDAO = new JdbcBoardDAO();
+		boardDAO = new MybatisBoardDAO();
 	}
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException {

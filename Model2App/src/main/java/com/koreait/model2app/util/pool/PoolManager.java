@@ -18,7 +18,7 @@ public class PoolManager {
 	private PoolManager() {
 		try {
 			context = new InitialContext();
-			ds = (DataSource)context.lookup("java:comp/env/jndi/mysql");
+			ds = (DataSource)context.lookup("java:comp/env/jndi/oracle");
 
 		} catch (NamingException e) {
 			// TODO Auto-generated catch block

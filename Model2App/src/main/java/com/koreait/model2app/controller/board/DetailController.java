@@ -15,7 +15,7 @@ public class DetailController implements Controller{
 	BoardDAO boardDAO; 
 	
 	public DetailController() {
-		boardDAO = new JdbcBoardDAO();
+		boardDAO = new MybatisBoardDAO();
 	}
 	
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException {
