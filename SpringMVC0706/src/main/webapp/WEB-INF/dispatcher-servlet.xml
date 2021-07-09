@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<!-- 
+		스프링mvc에서는 컨트롤러 매핑 (어떤 동생이 일할지를 결정 짓는 과정) 분석을 형님 컨트롤러가
+		직접하지 않고, 전담 조사 객체가 별도로 존재한다. HandlerMapping
+		종류) 	SimpleUrlHandlerMapping,
+				BeanNameUrlHandlerMapping,
+				DefaultAnnotationHandlerMapping
+		만일 개발자가 전담조사자 인 HandlerMapping를 결정 짓지 않을 경우 디폴트 핸들러 매핑이 지정
+		DefaultAnnotationHandlerMapping(@ 어노테이션을 이용한 동생 컨트롤러 검색)
+	-->
+
+	<bean class="com.koreait.springmvc0706.model.board.dao.MybatisBoardDAO" id="mybatisBoardDAO"></bean>
+
+	<!-- simpleUrlHandlerMapping 객체는 어떤 요청 url에 어떤 하위
+	컨트롤러가 동작할지를 map받식으로 연결한 객체 -->
+	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="alwaysUseFullPath" value="true"></property>
+		<property name="mappings">
+			<props>
+				<prop key="/board/list">listController</prop>
+				<prop key="/board/regist">registController</prop>
+				<prop key="/board/update">updateController</prop>
+				<prop key="/board/delete">deleteController</prop>			
+				<prop key="/board/detail">detailController</prop>			
+			</props>
+		</property>
+	</bean>
+	
+	<!-- DI를 이용하여 DAO를 컨트롤러에 주입 -->
+	<bean class="com.koreait.springmvc0706.controller.ListController"
+	name="listController">
+		<property name="boardDAO" ref="mybatisBoardDAO"></property>
+	</bean>
+	
+	<bean class="com.koreait.springmvc0706.controller.registController"
+	name="registController"></bean>
+	<bean class="com.koreait.springmvc0706.controller.updateController"
+	name="updateController"></bean>
+	<bean class="com.koreait.springmvc0706.controller.deleteController"
+	name="deleteController"></bean>
+	<bean class="com.koreait.springmvc0706.controller.detailController"
+	name="detailController"></bean>
+
+
+</beans>
