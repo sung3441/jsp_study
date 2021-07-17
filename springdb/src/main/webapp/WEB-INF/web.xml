@@ -4,6 +4,21 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	id="WebApp_ID" version="3.1">
 	<display-name>springdb</display-name>
+	
+	<!-- 서버가 가동될 때 servletContext인 applicaion내장 객체에 원하는 메세지 담기 
+		즉, 이렇게 servletContext 수준으로 spring bean을 관리할 경우,
+		모든 서블릿에서 공통적으로 접근이 가능하다 따라서 비즈니스 로직 등의 모델파트의 빈들은
+		ServletContext가 관리하는 ApplicationContext에 등록하자
+	-->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>WEB-INF/root-context.xml</param-value>
+	</context-param>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	
+	
 	<!-- 필터 설정 -->
 	<filter>
 		<filter-name>encodingFilter</filter-name>
