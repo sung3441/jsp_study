@@ -1,9 +1,12 @@
+<%@page import="com.koreait.shoppingmall.domain.SubCategory"%>
+<%@page import="com.koreait.shoppingmall.domain.Product"%>
 <%@page import="com.koreait.shoppingmall.domain.TopCategoryCount"%>
 <%@page import="com.koreait.shoppingmall.domain.TopCategory"%>
 <%@page import="java.util.List"%>
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%
-	List<TopCategoryCount> topList = (List)request.getAttribute("topList");
+	Product product = (Product) request.getAttribute("product"); //상품정보
+	List<TopCategoryCount> topList = (List)request.getAttribute("topList"); //이 상품이 등록된 최상위 카테고리
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -57,7 +60,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">상품 등록</h1>
+            <h1 class="m-0">상품 상세정보</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -82,62 +85,79 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form name='form1'>
-                <div class="card-body">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">상위 카테고리</label>
-                    <div class="form-group">
-                        <select class="form-control" name="topcategory_id">
-                        	<option value="0">카테고리 선택</option>
-                         	<%for(TopCategoryCount obj : topList){ %>
-                         	<option value="<%=obj.getTopcategory_id() %>"><%=obj.getTop_name() %></option>
-                         	<%} %>
-                        </select>
-                      </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">하위 카테고리</label>
-                     <div class="form-group">
-                        <select class="form-control" name="subcategory_id">
-                        </select>
-                      </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">상품명</label>
-                    <input type="text"  name="product_name" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">브랜드</label>
-                    <input type="text" name="brand" class="form-control" id="exampleInputEmail1" placeholder="Password">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">가격</label>
-                    <input type="text" name="price" class="form-control" id="exampleInputEmail1" placeholder="Password">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">상세정보</label>
-                    <textarea class="form-control" name="info" rows="" cols=""></textarea>
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputFile">File input</label>
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <input type="file" name="photo" class="custom-file-input" id="exampleInputFile">
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                      </div>
-                      <div class="input-group-append">
-                        <span class="input-group-text">Upload</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- /.card-body -->
+						<form name='form1'>
+							<input type="hidden" name="product_id"
+								value="<%= product.getProduct_id() %>">
+							<input type="hidden" name="product_img" value="<%=product.getProduct_img()%>">
+							<div class="card-body">
+								<div class="form-group">
+									<label for="exampleInputEmail1">상위 카테고리</label>
+									<div class="form-group">
+										<select class="form-control" name="topcategory_id">
+											<option value="0">카테고리 선택</option>
+											<%for(TopCategoryCount obj : topList){ %>
+											<%if(obj.getTopcategory_id()==product.getSubCategory().getTopcategory_id()){ %>
+											<option value="<%=obj.getTopcategory_id() %>" selected><%=obj.getTop_name() %></option>
+											<%}else{ %>
+											<option value="<%=obj.getTopcategory_id() %>"><%=obj.getTop_name() %></option>
+											<%} %>
+											<%} %>
+										</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="exampleInputEmail1">하위 카테고리</label>
+									<div class="form-group">
+										<select class="form-control" name="subcategory_id">
+											<option
+												value="<%=product.getSubCategory().getSubcategory_id()%>"><%=product.getSubCategory().getSub_name() %></option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="exampleInputEmail1">상품명</label> <input type="text"
+										name="product_name" class="form-control"
+										id="exampleInputEmail1" value="<%=product.getProduct_name() %>" placeholder="Enter email">
+								</div>
+								<div class="form-group">
+									<label for="exampleInputPassword1">브랜드</label> <input
+										type="text" name="brand" class="form-control"
+										id="exampleInputEmail1" value="<%=product.getBrand() %>" placeholder="Password">
+								</div>
+								<div class="form-group">
+									<label for="exampleInputPassword1">가격</label> <input
+										type="text" name="price" class="form-control"
+										id="exampleInputEmail1" value="<%=product.getPrice() %>" placeholder="Password">
+								</div>
+								<div class="form-group">
+									<label for="exampleInputPassword1">상세정보</label>
+									<textarea class="form-control" name="info" rows="" cols=""><%=product.getInfo() %></textarea>
+								</div>
+								<div class="form-group">
+									<label for="exampleInputFile">File input</label>
+									<div class="input-group">
+										<div class="custom-file">
+											<input type="file" name="photo" class="custom-file-input"
+												id="exampleInputFile"> <label
+												class="custom-file-label" for="exampleInputFile">Choose
+												file</label>
+										</div>
+										<div class="input-group-append">
+											<span class="input-group-text">Upload</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- /.card-body -->
 
-                <div class="card-footer">
-                  <button type="button" class="btn btn-primary" onClick="regist()">Submit</button>
-                </div>
-              </form>
-            </div>
+							<div class="card-footer">
+								<button type="button" class="btn btn-primary"
+									onClick="getList()">목록</button>
+								<button type="button" class="btn btn-primary" onClick="update()">수정</button>
+								<button type="button" class="btn btn-primary" onClick="del()">삭제</button>
+							</div>
+						</form>
+					</div>
        	
        	<!-- 상품 등록폼 끝 -->
        
@@ -212,7 +232,8 @@
 <!-- Page specific script -->
 <script>
 $(function () {
-  bsCustomFileInput.init();
+	
+bsCustomFileInput.init();
 	$("select[name='topcategory_id']").change(function(){
 		getSubList($(this).val());
 	});
@@ -238,15 +259,27 @@ function getSubList(topcategory_id){
 	});
 }
 
-//상품 등록을 요청하기
-function regist(){
-	$("form[name='form1']").attr({
-		"action" : "/admin/product/regist",
-		"method" : "post",
-		"enctype" : "multipart/form-data"
-	});
-	$("form[name='form1']").submit();
+
+function getList(){
+	
 }
+
+function update(){
+	
+}
+
+function del(){
+	if(confirm("정말로 삭제 하시겠습니까?")){
+		$("form").attr({
+			action : "/admin/product/del",
+			method : "post",
+			enctype : "multipart/form-data"
+		});
+		$("form").submit();
+	}
+}
+
+
 </script>
 <!-- 등록 폼 관련 종료 -->
 </script>

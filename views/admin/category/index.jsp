@@ -15,9 +15,9 @@
 	<!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="/resources/admin/plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="/resources/admin/dist/css/adminlte.min.css">
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -112,6 +112,7 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
+      <!-- 테이블 샘플 시작 -->
        <div class="row">
           <div class="col-12">
             <div class="card">
@@ -169,6 +170,7 @@
             <!-- /.card -->
           </div>
         </div>
+        <!-- 테이블 샘플 끝 -->
       </div>
     </section>
     <!-- /.content -->
@@ -227,8 +229,8 @@
 
 <!-- simple 테이블 관련 링크 -->
 <!-- AdminLTE App -->
-<script src="../../dist/js/adminlte.min.js"></script>
+<script src="/resources/admin/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="../../dist/js/demo.js"></script>
+<script src="/resources/admin/dist/js/demo.js"></script>
 </body>
 </html>									
